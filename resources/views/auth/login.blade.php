@@ -37,31 +37,38 @@
         <input name="email" type="email" class="form-control"
         id="floatingInput" placeholder="name@example.com">
         <label for="floatingInput">Email address</label>
+        @error('email')
+        <span class="text-danger">{{ $message }}</span>
+        @enderror
+      </div>
+      <div class="form-floating" style="margin-botttom: 10px">
+        <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
         @error('password')
         <span class="text-danger">{{ $message }}</span>
         @enderror
       </div>
 
-      <div class="form-check text-start mt-3">
+      <div class="form-check text-start my-3">
         <input name="rememberme" class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
           Remember me
           </label>
       </div>
-      @if(session()->has("success"))
-        <div class="alert alert-success mt-3">
-          {{ session()->get("success") }}
+      @if(session()->has('success'))
+        <div class="alert alert-success">
+          {{ session()->get('success') }}
         </div>
       @endif
-      @if(session("error"))
+      @if(session('error'))
         <div class="alert alert-danger">
-          {{ session("error")}}
+          {{ session('error') }}
         </div>
       @endif
       <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
       </form>
-      <a href="{{route("register")}}" class="text-center">Create an account</a>
+      <a href="{{ route('register') }}" class="text-center">Create an account</a>
       <p class="mt-5 mb-3 text-body-secondary">&copy; 2017-2024</p>
-      </form>
+    </form>
   </main>
 @endsection
